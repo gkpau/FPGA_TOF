@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:E:/TOF_4Ports190308/TOF_4Ports.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-35-Master.xdc rfile:../../../TOF_4Ports.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-35-Master.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:E:/FPGA_projects/TOF_4Ports/TOF_4Ports.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-35-Master.xdc rfile:../../../TOF_4Ports.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-35-Master.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:95 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN N15 IOSTANDARD LVCMOS33} [get_ports ck_io8]
 set_property src_info {type:XDC file:1 line:96 export:INPUT save:INPUT read:READ} [current_design]

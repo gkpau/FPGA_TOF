@@ -65,22 +65,21 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a35ticsg324-1L
   set_property board_part digilentinc.com:arty-a7-35:part0:1.0 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir E:/TOF_4Ports190308/TOF_4Ports.cache/wt [current_project]
-  set_property parent.project_path E:/TOF_4Ports190308/TOF_4Ports.xpr [current_project]
-  set_property ip_output_repo E:/TOF_4Ports190308/TOF_4Ports.cache/ip [current_project]
+  set_property webtalk.parent_dir E:/FPGA_projects/TOF_4Ports/TOF_4Ports.cache/wt [current_project]
+  set_property parent.project_path E:/FPGA_projects/TOF_4Ports/TOF_4Ports.xpr [current_project]
+  set_property ip_output_repo E:/FPGA_projects/TOF_4Ports/TOF_4Ports.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
-  add_files -quiet E:/TOF_4Ports190308/TOF_4Ports.runs/synth_1/design_1_wrapper.dcp
+  add_files -quiet E:/FPGA_projects/TOF_4Ports/TOF_4Ports.runs/synth_1/design_1_wrapper.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files E:/TOF_4Ports190308/TOF_4Ports.srcs/sources_1/bd/design_1/design_1.bd
+  add_files E:/FPGA_projects/TOF_4Ports/TOF_4Ports.srcs/sources_1/bd/design_1/design_1.bd
   set_param project.isImplRun false
-  read_xdc E:/TOF_4Ports190308/TOF_4Ports.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-35-Master.xdc
+  read_xdc E:/FPGA_projects/TOF_4Ports/TOF_4Ports.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-35-Master.xdc
   set_param project.isImplRun true
   link_design -top design_1_wrapper -part xc7a35ticsg324-1L
   set_param project.isImplRun false

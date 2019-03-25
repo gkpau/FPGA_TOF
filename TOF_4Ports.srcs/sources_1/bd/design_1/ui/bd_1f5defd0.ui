@@ -74,8 +74,8 @@ preplace netloc axi_ethernetlite_0_MDIO 1 5 1 NJ
 preplace netloc syncPulseCounter_0_pin0EventCounter_out 1 3 1 1750
 preplace netloc axi_ethernetlite_0_MII 1 5 1 NJ
 preplace netloc rst_mig_7series_0_80M_mb_reset 1 2 3 1180 -200 1850J 20 2590
-preplace netloc microblaze_0_axi_periph_M11_AXI 1 3 2 1970 110 2490
 preplace netloc microblaze_0_axi_periph_M10_AXI 1 3 2 1960 50 2470
+preplace netloc microblaze_0_axi_periph_M11_AXI 1 3 2 1970 110 2490
 preplace netloc Net1 1 4 1 2520
 preplace netloc microblaze_0_axi_periph_M09_AXI 1 4 1 2550
 preplace netloc microblaze_0_debug 1 1 2 720 -110 NJ

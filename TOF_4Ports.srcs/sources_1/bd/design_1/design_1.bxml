@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="36">
   <CompositeFile CompositeFileTopName="design_1" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1553522145"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1553522145"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1553522145"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1553522145"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1553529656"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1553529656"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1553529656"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1553529656"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\design_1_syncPulseCounter_0_0\design_1_syncPulseCounter_0_0.xci" Type="IP">
         <Instance HierarchyPath="syncPulseCounter_0"/>
