@@ -1,0 +1,482 @@
+/*
+ * TCP_Pulse_logger.c
+ *
+ *  Created on: Jan 17, 2019
+ *      Author: pgomez
+ */
+
+//INITIALIZATION OF VARIABLES
+
+#include "TCP_pulse_logger.h"
+#include <string.h>
+#include "lwip/tcp.h"
+
+void TCP_pulseLog_init(){
+	STATUS_FLAG=STOP;
+	uC2FPGA=0x40000000;
+	FPGA2uC=0x40000000+8;
+	FPGA2uCLocal=0;
+	memAddr_read=0x40010000;
+	memAddr_write=0x40010000+8;
+
+	regLow0=0x40030000;
+	regHigh0=0x40030000+8;
+	regLow1=0x40040000;
+	regHigh1=0x40040000+8;
+	regLow2=0x40050000;
+	regHigh2=0x40050000+8;
+	regLow3=0x40020000;
+	regHigh3=0x40020000+8;
+
+	eventCounterLow0=0x40060000;
+	eventCounterHigh0=0x40060000+8;
+	eventCounterLow1=0x40090000;
+	eventCounterHigh1=0x40090000+8;
+	eventCounterLow2=0x40070000;
+	eventCounterHigh2=0x40070000+8;
+	eventCounterLow3=0x40080000;
+	eventCounterHigh3=0x40080000+8;
+
+	memAddr_readLocal=0;
+	memAddr_readLocal0=0;
+	memAddr_readLocal1=0;
+	memAddr_readLocal2=0;
+	memAddr_readLocal3=0;
+
+	memAddr_writeLocal=0;
+	memAddr_writeLocal0=0;
+	memAddr_writeLocal1=0;
+	memAddr_writeLocal2=0;
+	memAddr_writeLocal3=0;
+
+	newDataFlag0=0;
+	newDataFlag1=0;
+	newDataFlag2=0;
+	newDataFlag3=0;
+
+
+	//TCPReadyFlag=0;
+	*uC2FPGA=0;
+	//bufferSelect=0;
+	SRAM_WritePointer=0x81000000;
+	SRAM_ReadPointer=0x81000000;
+
+	pulseCounter0=0;
+	counterOld=0;
+
+	autoFlag=0;
+
+}
+
+void reset_uC2FPGA(){
+	*uC2FPGA=1;
+	*uC2FPGA=0;
+	pulseCounter0=0;
+	counterOld=0;
+}
+
+
+void reset_SRAM_writePointer(){
+	SRAM_WritePointer=0x81000000;
+	pulseCounter0=0;
+	counterOld=0;
+	return;
+}
+
+
+void reset_SRAM_readPointer(){
+	SRAM_ReadPointer=0x81000000;
+	pulseCounter0=0;
+	counterOld=0;
+	return;
+}
+
+
+
+void logSRAM(uint32_t data){
+	*(SRAM_WritePointer)=data;
+	//xil_printf("%u    %u\n\r",SRAM_WritePointer,*SRAM_WritePointer);
+
+
+	SRAM_WritePointer+=1;
+	//*SRAM_WritePointer=(1<<31);
+	return;
+
+}
+
+
+
+void sendChunkSRAM(){
+
+	if ((4*MAX_BUFFER_LEN)<tcp_sndbuf(TCP_PCB_GLOBAL)){
+
+		if((SRAM_WritePointer-SRAM_ReadPointer)>0){
+			if((SRAM_WritePointer-SRAM_ReadPointer)>MAX_BUFFER_LEN){
+				tcp_write(TCP_PCB_GLOBAL,SRAM_ReadPointer, 4*MAX_BUFFER_LEN, 1);
+				SRAM_ReadPointer+=MAX_BUFFER_LEN;
+
+			}
+
+			else{
+				tcp_write(TCP_PCB_GLOBAL,SRAM_ReadPointer, 4*(SRAM_WritePointer-SRAM_ReadPointer), 1);
+				SRAM_ReadPointer=SRAM_WritePointer;
+
+			}
+		tcp_output(TCP_PCB_GLOBAL);
+		}
+		else{
+			if (autoFlag){
+				STATUS_FLAG=REQUEST_MEASUREMENT;
+			}
+		}
+
+	}
+
+//xil_printf("%u\n\r",*SRAM_ReadPointer);
+	return;
+}
+
+
+
+
+
+
+//void sendDataOverBuffer(uint32_t data, uint32_t *buffer, int *bufferLen, int *TCPReadyFlag){
+//	i_aux++;
+//
+//
+//
+////	if (*bufferLen==0){
+////		buffer0[*bufferLen]= 0;
+////		*bufferLen=*bufferLen+1;
+////		buffer0[*bufferLen]= 0xFFFF0000;
+////		*bufferLen=*bufferLen+1;
+////	}
+//
+//
+//	if (*buffer<50){
+//		*TCPReadyFlag=1;
+//
+//	}
+//
+//
+//
+//	buffer0[*bufferLen]= data;
+//	*bufferLen=*bufferLen+1;
+//
+//
+//		if ((*bufferLen)==MAX_BUFFER_LEN){
+//			if (tcp_sndbuf(TCP_PCB_GLOBAL) > (*bufferLen)*4) {
+//			//xil_printf("initial %d %d %d \n\r",i_aux,(*bufferLen)*4,tcp_sndbuf(TCP_PCB_GLOBAL));
+//			tcp_write(TCP_PCB_GLOBAL,buffer0, (*bufferLen)*4, 1);
+//			tcp_output(TCP_PCB_GLOBAL);
+//
+//
+//			//xil_printf("final %d %d %d \n\r",i_aux,(*bufferLen)*4,tcp_sndbuf(TCP_PCB_GLOBAL));
+//
+//			*bufferLen=0;
+//			*TCPReadyFlag=1;
+//			}
+////			bufferSelect=1;
+//			else{
+//
+//					xil_printf("%d %d %d no space in tcp_sndbuf\n\r",i_aux,(*bufferLen)*4,tcp_sndbuf(TCP_PCB_GLOBAL));
+//		}
+//
+//			*bufferLen=0;
+//			*TCPReadyFlag=1;
+//	}
+//
+//
+////if (bufferSelect==1){
+////
+////	buffer1[*bufferLen]= data;
+////	*bufferLen=*bufferLen+1;
+////
+////
+////		if (*bufferLen==MAX_BUFFER_LEN){
+////			tcp_write(TCP_PCB_GLOBAL,buffer1, (*bufferLen)*4, 1);
+////			tcp_output(TCP_PCB_GLOBAL);
+////
+////			*bufferLen=0;
+////			*TCPReadyFlag=1;
+////			bufferSelect=0;
+////		}
+////	}
+//
+//	return;
+//}
+//
+//void forceDataOverBuffer(uint32_t *buffer,  int *bufferLen,  int *TCPReadyFlag){
+//	if (bufferSelect==0){
+//		tcp_write(TCP_PCB_GLOBAL,buffer0, (*bufferLen)*4, 1);
+//	}
+//
+//
+//	if (bufferSelect==1){
+//		tcp_write(TCP_PCB_GLOBAL,buffer1, (*bufferLen)*4, 1);
+//	}
+//
+//
+//	tcp_output(TCP_PCB_GLOBAL);
+//	*bufferLen=0;
+//	*TCPReadyFlag=1;
+//	bufferSelect=0;
+//
+//	return;
+//}
+//
+//
+//
+//
+//void TCP_pulseLog_run(){
+//	//xil_printf("%d\n\r",tcp_sndbuf(TCP_PCB_GLOBAL));
+//	if (tcp_sndbuf(TCP_PCB_GLOBAL)<8192)
+//	{
+//		TCPReadyFlag=1;
+//		//tcp_output(TCP_PCB_GLOBAL);
+//
+//	}
+//	else{
+//
+//	FPGA2uCLocal=*FPGA2uC;
+//	memAddr_writeLocal=*memAddr_write;
+//	//xil_printf("%d",FPGA2uCLocal);
+//	if (FPGA2uCLocal){
+//
+//		memAddr_writeLocal0=(memAddr_writeLocal & 0x000000FF);
+//		memAddr_writeLocal1=(memAddr_writeLocal & 0x0000FF00)>>8;
+//		memAddr_writeLocal2=(memAddr_writeLocal & 0x00FF0000)>>16;
+//		memAddr_writeLocal3=(memAddr_writeLocal & 0xFF000000)>>24;
+//
+//
+//		newDataFlag0=0;
+//		newDataFlag1=0;
+//		newDataFlag2=0;
+//		newDataFlag3=0;
+//
+//		if (memAddr_readLocal0!=memAddr_writeLocal0){
+//			memAddr_readLocal0+=1;
+//			newDataFlag0=1;
+//		}
+//
+//		if (memAddr_readLocal1!=memAddr_writeLocal1){
+//			memAddr_readLocal1+=1;
+//			newDataFlag1=1;
+//		}
+//
+//		if (memAddr_readLocal2!=memAddr_writeLocal2){
+//			memAddr_readLocal2+=1;
+//			newDataFlag2=1;
+//		}
+//
+//		if (memAddr_readLocal3!=memAddr_writeLocal3){
+//			memAddr_readLocal3+=1;
+//			newDataFlag3=1;
+//		}
+//
+//
+//		memAddr_readLocal=(memAddr_readLocal3<<24)|(memAddr_readLocal2<<16)|(memAddr_readLocal1<<8)|memAddr_readLocal0;
+//		*memAddr_read=memAddr_readLocal;
+//
+//
+//
+//		if(newDataFlag0){
+//
+//			sendDataOverBuffer(*regLow0,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*regHigh0,buffer,&bufferLen,&TCPReadyFlag);
+//		}
+//
+//		if(newDataFlag1){
+//
+//					sendDataOverBuffer(*regLow1,buffer,&bufferLen,&TCPReadyFlag);
+//					sendDataOverBuffer(*regHigh1,buffer,&bufferLen,&TCPReadyFlag);
+//		}
+//
+//		if(newDataFlag2){
+//
+//							sendDataOverBuffer(*regLow2,buffer,&bufferLen,&TCPReadyFlag);
+//							sendDataOverBuffer(*regHigh2,buffer,&bufferLen,&TCPReadyFlag);
+//		}
+//
+//		if(newDataFlag3){
+//
+//								sendDataOverBuffer(*regLow3,buffer,&bufferLen,&TCPReadyFlag);
+//								sendDataOverBuffer(*regHigh3,buffer,&bufferLen,&TCPReadyFlag);
+//		}
+//
+//
+//		if ((FPGA2uCLocal==2)&&(newDataFlag0==0)&&(newDataFlag1==0)&&(newDataFlag2==0)&&(newDataFlag3==0) ){
+//			sendDataOverBuffer(*eventCounterLow0,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*eventCounterHigh0,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*eventCounterLow1,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*eventCounterHigh1,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*eventCounterLow2,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*eventCounterHigh2,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*eventCounterLow3,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(*eventCounterHigh3,buffer,&bufferLen,&TCPReadyFlag);
+//
+//			sendDataOverBuffer(0xFFFFFFFF,buffer,&bufferLen,&TCPReadyFlag);
+//			sendDataOverBuffer(0xFFFFFFFF,buffer,&bufferLen,&TCPReadyFlag);
+//			forceDataOverBuffer(buffer,&bufferLen,&TCPReadyFlag);
+//
+//			reset_uC2FPGA();
+//		}
+//
+//
+//	}
+//
+//
+//	else{
+//		memAddr_readLocal=0;
+//		memAddr_readLocal0=0;
+//		memAddr_readLocal1=0;
+//		memAddr_readLocal2=0;
+//		memAddr_readLocal3=0;
+//
+//
+//	}
+//
+//}
+//}
+//
+//
+//
+//
+//
+
+
+
+
+
+
+void SRAM_pulseLog(){
+	//xil_printf("%d\n\r",tcp_sndbuf(TCP_PCB_GLOBAL));
+
+	FPGA2uCLocal=*FPGA2uC;
+	memAddr_writeLocal=*memAddr_write;
+	memAddr_writeLocal=(*eventCounterLow0)%64;
+	//xil_printf("%d",FPGA2uCLocal);
+
+	if (FPGA2uCLocal){
+
+		memAddr_writeLocal0=(memAddr_writeLocal & 0x000000FF);
+		memAddr_writeLocal1=(memAddr_writeLocal & 0x0000FF00)>>8;
+		memAddr_writeLocal2=(memAddr_writeLocal & 0x00FF0000)>>16;
+		memAddr_writeLocal3=(memAddr_writeLocal & 0xFF000000)>>24;
+
+
+		newDataFlag0=0;
+		newDataFlag1=0;
+		newDataFlag2=0;
+		newDataFlag3=0;
+
+
+
+		if (memAddr_readLocal0!=memAddr_writeLocal0){
+			memAddr_readLocal0+=1;
+			newDataFlag0=1;
+		}
+
+		if (memAddr_readLocal1!=memAddr_writeLocal1){
+			memAddr_readLocal1+=1;
+			newDataFlag1=1;
+		}
+
+		if (memAddr_readLocal2!=memAddr_writeLocal2){
+			memAddr_readLocal2+=1;
+			newDataFlag2=1;
+		}
+
+		if (memAddr_readLocal3!=memAddr_writeLocal3){
+			memAddr_readLocal3+=1;
+			newDataFlag3=1;
+		}
+
+
+		memAddr_readLocal=(memAddr_readLocal3<<24)|(memAddr_readLocal2<<16)|(memAddr_readLocal1<<8)|memAddr_readLocal0;
+		*memAddr_read=memAddr_readLocal;
+
+
+
+		if(newDataFlag0){
+			pulseCounter0++;
+
+			xil_printf("%u   %u   %u \n\r",pulseCounter0, *eventCounterLow0);
+
+			logSRAM(*regLow0);
+
+			logSRAM(*regHigh0);
+
+			if (counterOld>*regLow0){
+				xil_printf("%u   %u   %u \n\r",pulseCounter0,*regLow0,*regLow0-counterOld);
+			}
+			counterOld=*regLow0;
+		}
+
+		if(newDataFlag1){
+
+			logSRAM(*regLow1);
+			logSRAM(*regHigh1);
+		}
+
+		if(newDataFlag2){
+
+			logSRAM(*regLow2);
+			logSRAM(*regHigh2);
+		}
+
+		if(newDataFlag3){
+
+			logSRAM(*regLow3);
+			logSRAM(*regHigh3);
+		}
+
+
+		if ((FPGA2uCLocal==2)&&(newDataFlag0==0)&&(newDataFlag1==0)&&(newDataFlag2==0)&&(newDataFlag3==0) ){
+
+//			xil_printf("%d %d %d %d \n\r",memAddr_writeLocal0,memAddr_writeLocal1,memAddr_writeLocal2,memAddr_writeLocal3 );
+
+			logSRAM(0x0);
+			logSRAM(0xFFFF0000);
+
+
+			logSRAM(*eventCounterLow0);
+			logSRAM(*eventCounterHigh0);
+			logSRAM(*eventCounterLow1);
+			logSRAM(*eventCounterHigh1);
+			logSRAM(*eventCounterLow2);
+			logSRAM(*eventCounterHigh2);
+			logSRAM(*eventCounterLow3);
+			logSRAM(*eventCounterHigh3);
+
+			logSRAM(0xFFFFFFFF);
+			logSRAM(0xFFFFFFFF);
+
+//
+
+			reset_uC2FPGA();
+			STATUS_FLAG=REQUEST_DATA;
+			if (autoFlag){
+				STATUS_FLAG=REQUEST_DATA;
+			}
+		}
+
+
+	}
+
+
+	else{
+		memAddr_readLocal=0;
+		memAddr_readLocal0=0;
+		memAddr_readLocal1=0;
+		memAddr_readLocal2=0;
+		memAddr_readLocal3=0;
+
+
+	}
+
+}
+
+
+

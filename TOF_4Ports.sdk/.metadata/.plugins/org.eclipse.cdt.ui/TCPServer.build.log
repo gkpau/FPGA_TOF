@@ -1,0 +1,6 @@
+12:06:33 **** Incremental Build of configuration Debug for project TCPServer ****
+make all 
+make: Nothing to be done for 'all'.
+
+12:06:33 Build Finished (took 134ms)
+

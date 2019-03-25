@@ -1,0 +1,270 @@
+11:42:05 **** Auto Build of project srec_spi_bootloader_bsp ****
+make -k all 
+"Running Make include in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/cpu_v2_8/src"
+make -C microblaze_0/libsrc/cpu_v2_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/gpio_v4_3/src"
+make -C microblaze_0/libsrc/gpio_v4_3/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/uartlite_v3_2/src"
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make include in microblaze_0/libsrc/xilisf_v5_12/src"
+make -C microblaze_0/libsrc/xilisf_v5_12/src -s include  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Running Make libs in microblaze_0/libsrc/bram_v4_2/src"
+make -C microblaze_0/libsrc/bram_v4_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling bram"
+In file included from xbram.c:58:0:
+xbram.h:132:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xbram_g.c:50:0:
+xbram.h:132:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xbram_intr.c:54:0:
+xbram.h:132:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xbram_selftest.c:68:0:
+xbram.h:132:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xbram_sinit.c:55:10: fatal error: xstatus.h: No such file or directory
+ #include "xstatus.h"
+          ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:20: libs] Error 1
+"Running Make libs in microblaze_0/libsrc/cpu_v2_8/src"
+make: *** [Makefile:30: microblaze_0/libsrc/bram_v4_2/src/make.libs] Error 2
+make -C microblaze_0/libsrc/cpu_v2_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling cpu"
+In file included from xio.c:58:0:
+xio.h:86:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:19: libs] Error 1
+make: *** [Makefile:30: microblaze_0/libsrc/cpu_v2_8/src/make.libs] Error 2
+"Running Make libs in microblaze_0/libsrc/emaclite_v4_3/src"
+make -C microblaze_0/libsrc/emaclite_v4_3/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling emaclite"
+xemaclite.c:72:10: fatal error: xil_io.h: No such file or directory
+ #include "xil_io.h"
+          ^~~~~~~~~~
+compilation terminated.
+xemaclite_g.c:52:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+In file included from xemaclite_i.h:67:0,
+                 from xemaclite_intr.c:60:
+xemaclite.h:222:10: fatal error: xenv.h: No such file or directory
+ #include "xenv.h"
+          ^~~~~~~~
+compilation terminated.
+xemaclite_l.c:67:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xemaclite_selftest.c:53:10: fatal error: xil_io.h: No such file or directory
+ #include "xil_io.h"
+          ^~~~~~~~~~
+compilation terminated.
+xemaclite_sinit.c:54:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:18: libs] Error 1
+make: *** [Makefile:30: microblaze_0/libsrc/emaclite_v4_3/src/make.libs] Error 2
+"Running Make libs in microblaze_0/libsrc/gpio_v4_3/src"
+make -C microblaze_0/libsrc/gpio_v4_3/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling gpio"
+In file included from xgpio.c:70:0:
+xgpio.h:129:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xgpio_extra.c:60:0:
+xgpio.h:129:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xgpio_g.c:54:0:
+xgpio.h:129:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xgpio_intr.c:59:0:
+xgpio.h:129:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xgpio_selftest.c:55:0:
+xgpio.h:129:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xgpio_sinit.c:56:10: fatal error: xstatus.h: No such file or directory
+ #include "xstatus.h"
+          ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:20: libs] Error 1
+make: *** [Makefile:30: microblaze_0/libsrc/gpio_v4_3/src/make.libs] Error 2
+"Running Make libs in microblaze_0/libsrc/intc_v3_8/src"
+make -C microblaze_0/libsrc/intc_v3_8/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling intc"
+xintc.c:77:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xintc_g.c:68:0:
+xintc.h:228:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xintc_intr.c:94:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xintc_l.c:79:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+xintc_options.c:58:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xintc_selftest.c:56:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:20: libs] Error 1
+make: *** [Makefile:30: microblaze_0/libsrc/intc_v3_8/src/make.libs] Error 2
+"Running Make libs in microblaze_0/libsrc/tmrctr_v4_5/src"
+make -C microblaze_0/libsrc/tmrctr_v4_5/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling tmrctr"
+xtmrctr.c:72:10: fatal error: xstatus.h: No such file or directory
+ #include "xstatus.h"
+          ^~~~~~~~~~~
+compilation terminated.
+In file included from xtmrctr_g.c:53:0:
+xtmrctr.h:174:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xtmrctr_intr.c:54:0:
+xtmrctr.h:174:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xtmrctr_l.c:54:0:
+xtmrctr_l.h:74:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xtmrctr_options.c:53:0:
+xtmrctr.h:174:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xtmrctr_selftest.c:52:10: fatal error: xil_io.h: No such file or directory
+ #include "xil_io.h"
+          ^~~~~~~~~~
+compilation terminated.
+xtmrctr_sinit.c:52:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+In file included from xtmrctr_stats.c:51:0:
+xtmrctr.h:174:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:19: libs] Error 1
+"Running Make libs in microblaze_0/libsrc/uartlite_v3_2/src"
+make: *** [Makefile:30: microblaze_0/libsrc/tmrctr_v4_5/src/make.libs] Error 2
+make -C microblaze_0/libsrc/uartlite_v3_2/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling uartlite"
+In file included from xuartlite.c:80:0:
+xuartlite.h:158:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xuartlite_g.c:52:0:
+xuartlite.h:158:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xuartlite_intr.c:56:0:
+xuartlite.h:158:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+In file included from xuartlite_l.c:56:0:
+xuartlite_l.h:67:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xuartlite_selftest.c:57:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+xuartlite_sinit.c:51:10: fatal error: xstatus.h: No such file or directory
+ #include "xstatus.h"
+          ^~~~~~~~~~~
+compilation terminated.
+xuartlite_stats.c:53:10: fatal error: xil_types.h: No such file or directory
+ #include "xil_types.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:20: libs] Error 1
+"Running Make libs in microblaze_0/libsrc/xilisf_v5_12/src"
+make: *** [Makefile:30: microblaze_0/libsrc/uartlite_v3_2/src/make.libs] Error 2
+make -C microblaze_0/libsrc/xilisf_v5_12/src -s libs  "SHELL=CMD" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-ffunction-sections -fdata-sections -Wall -Wextra"
+"Compiling XilIsf Library"
+In file included from xilisf_spr.c:60:0:
+include/xilisf.h:542:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:80: xilisf_spr.o] Error 1
+In file included from xilisf_erase.c:75:0:
+include/xilisf.h:542:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:80: xilisf_erase.o] Error 1
+In file included from xilisf_write.c:69:0:
+include/xilisf.h:542:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:80: xilisf_write.o] Error 1
+In file included from xilisf.c:116:0:
+include/xilisf.h:542:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:80: xilisf.o] Error 1
+In file included from xilisf_read.c:72:0:
+include/xilisf.h:542:10: fatal error: xparameters.h: No such file or directory
+ #include "xparameters.h"
+          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [Makefile:80: xilisf_read.o] Error 1
+make[1]: Target 'libs' not remade because of errors.
+make: *** [Makefile:30: microblaze_0/libsrc/xilisf_v5_12/src/make.libs] Error 2
+make: Target 'all' not remade because of errors.
+
+11:42:10 Build Finished (took 4s.834ms)
+

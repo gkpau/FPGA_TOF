@@ -1,0 +1,30 @@
+17:19:17 **** Auto Build of configuration Debug for project echo_test_bsp_xemaclite_intr_example_1 ****
+make all 
+'Building file: ../src/xemaclite_example_util.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xemaclite_example_util.o" -I../../echo_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/xemaclite_example_util.d" -MT"src/xemaclite_example_util.o" -o "src/xemaclite_example_util.o" "../src/xemaclite_example_util.c"
+'Finished building: ../src/xemaclite_example_util.c'
+' '
+'Building file: ../src/xemaclite_intr_example.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/xemaclite_intr_example.o" -I../../echo_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/xemaclite_intr_example.d" -MT"src/xemaclite_intr_example.o" -o "src/xemaclite_intr_example.o" "../src/xemaclite_intr_example.c"
+../src/xemaclite_intr_example.c: In function 'EmacLiteSendHandler':
+../src/xemaclite_intr_example.c:557:13: warning: variable 'XEmacInstancePtr' set but not used [-Wunused-but-set-variable]
+  XEmacLite *XEmacInstancePtr;
+             ^~~~~~~~~~~~~~~~
+'Finished building: ../src/xemaclite_intr_example.c'
+' '
+'Building target: echo_test_bsp_xemaclite_intr_example_1.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../echo_test_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "echo_test_bsp_xemaclite_intr_example_1.elf"  ./src/xemaclite_example_util.o ./src/xemaclite_intr_example.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: echo_test_bsp_xemaclite_intr_example_1.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size echo_test_bsp_xemaclite_intr_example_1.elf  |tee "echo_test_bsp_xemaclite_intr_example_1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  16516	    356	   6360	  23232	   5ac0	echo_test_bsp_xemaclite_intr_example_1.elf
+'Finished building: echo_test_bsp_xemaclite_intr_example_1.elf.size'
+' '
+
+17:19:18 Build Finished (took 949ms)
+

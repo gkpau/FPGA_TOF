@@ -1,0 +1,82 @@
+/*
+ * TCP_Pulse_Logger.h
+ *
+ *  Created on: Jan 17, 2019
+ *      Author: pgomez
+ */
+
+#ifndef SRC_TCP_PULSE_LOGGER_H_
+#define SRC_TCP_PULSE_LOGGER_H_
+#include <stdio.h>
+#define MAX_BUFFER_LEN 128
+
+struct tcp_pcb *TCP_PCB_GLOBAL ;
+enum STATUS_FLAG_TYPE {IDLE,START,MEASUREMENT,DATA_TRANSFER};
+volatile enum STATUS_FLAG_TYPE STATUS_FLAG;
+
+uint8_t *uC2FPGA;
+volatile uint8_t *FPGA2uC;
+uint8_t FPGA2uCLocal;
+uint32_t *memAddr_read;
+volatile uint32_t *memAddr_write;
+
+uint32_t memAddr_readLocal;
+uint8_t memAddr_readLocal0;
+uint8_t memAddr_readLocal1;
+uint8_t memAddr_readLocal2;
+uint8_t memAddr_readLocal3;
+
+volatile uint32_t memAddr_writeLocal;
+uint8_t memAddr_writeLocal0;
+uint8_t memAddr_writeLocal1;
+uint8_t memAddr_writeLocal2;
+uint8_t memAddr_writeLocal3;
+
+volatile uint32_t  *regLow0;
+volatile uint32_t  *regHigh0;
+volatile uint32_t  *regLow1;
+volatile uint32_t  *regHigh1;
+volatile uint32_t  *regLow2;
+volatile uint32_t  *regHigh2;
+volatile uint32_t  *regLow3;
+volatile uint32_t  *regHigh3;
+
+volatile uint32_t  *eventCounterLow0;
+volatile uint32_t  *eventCounterHigh0;
+volatile uint32_t  *eventCounterLow1;
+volatile uint32_t  *eventCounterHigh1;
+volatile uint32_t  *eventCounterLow2;
+volatile uint32_t  *eventCounterHigh2;
+volatile uint32_t  *eventCounterLow3;
+volatile uint32_t  *eventCounterHigh3;
+
+
+int dataTransferFinished;
+int newDataFlag0;
+int newDataFlag1;
+int newDataFlag2;
+int newDataFlag3;
+
+uint32_t buffer[MAX_BUFFER_LEN];
+uint32_t buffer0[MAX_BUFFER_LEN];
+uint32_t buffer1[MAX_BUFFER_LEN];
+int TCPReadyFlag;
+
+
+uint32_t *SRAM_WritePointer;
+uint32_t *SRAM_ReadPointer;
+int autoFlag;
+
+
+void reset_uC2FPGA();
+void TCP_pulseLog_init();
+
+void reset_SRAM_writePointer();
+void reset_SRAM_readPointer();
+void sendChunkSRAM();
+void SRAM_pulseLog();
+
+
+
+
+#endif /* SRC_TCP_PULSE_LOGGER_H_ */

@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# updatemem v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# 
+# Start of session at: Fri Mar  8 11:45:41 2019
+# Process ID: 7460
+# Current directory: E:/FPGA_projects/TOF_4Ports
+# Command line: updatemem.exe -mode batch -source E:/SDK/2018.3/scripts/updatemem/main.tcl -notrace -tclargs -meminfo Y:/Pau/FPGA_TOF/TOF_4Ports.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.mmi -data E:/SDK/2018.3/data/embeddedsw/lib/microblaze/mb_bootloop_le.elf -proc design_1_i/microblaze_0 -bit Y:/Pau/FPGA_TOF/TOF_4Ports.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit -out Y:/Pau/FPGA_TOF/TOF_4Ports.sdk/design_1_wrapper_hw_platform_0/download.bit -force
+# Log file: E:/FPGA_projects/TOF_4Ports/updatemem.log
+# Journal file: E:/FPGA_projects/TOF_4Ports\updatemem.jou
+#-----------------------------------------------------------
+source E:/SDK/2018.3/scripts/updatemem/main.tcl -notrace
+ Loading bitfile Y:/Pau/FPGA_TOF/TOF_4Ports.sdk/design_1_wrapper_hw_platform_0/design_1_wrapper.bit
+Loading data files...
+Updating memory content...
+Creating bitstream...
+Writing bitstream Y:/Pau/FPGA_TOF/TOF_4Ports.sdk/design_1_wrapper_hw_platform_0/download.bit...
+  update_mem: Time (s): cpu = 00:00:10 ; elapsed = 00:00:19 . Memory (MB): peak = 517.242 ; gain = 453.164
+INFO: [Common 17-206] Exiting updatemem at Fri Mar  8 11:46:01 2019...

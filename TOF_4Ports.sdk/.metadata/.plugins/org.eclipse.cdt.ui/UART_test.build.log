@@ -1,0 +1,62 @@
+10:57:26 **** Build of configuration Debug for project UART_test ****
+make all 
+'Building file: ../src/helloworld.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -I../../UART_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c:52:18: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint8_t *uC2FPGA=0x40000000;
+                  ^~~~~~~~~~
+../src/helloworld.c:53:18: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint8_t *FPGA2uC=0x40000000+8;
+                  ^~~~~~~~~~
+../src/helloworld.c:54:24: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t *memAddr_read=0x40010000;
+                        ^~~~~~~~~~
+../src/helloworld.c:55:25: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t *memAddr_write=0x40010000+8;
+                         ^~~~~~~~~~
+../src/helloworld.c:72:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow0=0x40030000;
+                            ^~~~~~~~~~
+../src/helloworld.c:73:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh0=0x40030000+8;
+                             ^~~~~~~~~~
+../src/helloworld.c:74:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow1=0x40040000;
+                            ^~~~~~~~~~
+../src/helloworld.c:75:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh1=0x40040000+8;
+                             ^~~~~~~~~~
+../src/helloworld.c:76:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow2=0x40050000;
+                            ^~~~~~~~~~
+../src/helloworld.c:77:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh2=0x40050000+8;
+                             ^~~~~~~~~~
+../src/helloworld.c:78:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow3=0x40020000;
+                            ^~~~~~~~~~
+../src/helloworld.c:79:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh3=0x40020000+8;
+                             ^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../UART_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building target: UART_test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../UART_test_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "UART_test.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: UART_test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size UART_test.elf  |tee "UART_test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   7824	    372	   3148	  11344	   2c50	UART_test.elf
+'Finished building: UART_test.elf.size'
+' '
+
+10:57:28 Build Finished (took 1s.524ms)
+

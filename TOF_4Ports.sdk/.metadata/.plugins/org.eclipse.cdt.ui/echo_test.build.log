@@ -1,0 +1,85 @@
+17:19:15 **** Auto Build of configuration Debug for project echo_test ****
+make all 
+'Building file: ../src/dataTransmitter.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/dataTransmitter.o" -I../../echo_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/dataTransmitter.d" -MT"src/dataTransmitter.o" -o "src/dataTransmitter.o" "../src/dataTransmitter.c"
+../src/dataTransmitter.c:13:18: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint8_t *uC2FPGA=0x40000000;
+                  ^~~~~~~~~~
+../src/dataTransmitter.c:14:18: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint8_t *FPGA2uC=0x40000000+8;
+                  ^~~~~~~~~~
+../src/dataTransmitter.c:15:24: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t *memAddr_read=0x40010000;
+                        ^~~~~~~~~~
+../src/dataTransmitter.c:16:25: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t *memAddr_write=0x40010000+8;
+                         ^~~~~~~~~~
+../src/dataTransmitter.c:33:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow0=0x40030000;
+                            ^~~~~~~~~~
+../src/dataTransmitter.c:34:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh0=0x40030000+8;
+                             ^~~~~~~~~~
+../src/dataTransmitter.c:35:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow1=0x40040000;
+                            ^~~~~~~~~~
+../src/dataTransmitter.c:36:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh1=0x40040000+8;
+                             ^~~~~~~~~~
+../src/dataTransmitter.c:37:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow2=0x40050000;
+                            ^~~~~~~~~~
+../src/dataTransmitter.c:38:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh2=0x40050000+8;
+                             ^~~~~~~~~~
+../src/dataTransmitter.c:39:28: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regLow3=0x40020000;
+                            ^~~~~~~~~~
+../src/dataTransmitter.c:40:29: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+ uint32_t volatile *regHigh3=0x40020000+8;
+                             ^~~~~~~~~~
+'Finished building: ../src/dataTransmitter.c'
+' '
+'Building file: ../src/echo.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/echo.o" -I../../echo_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/echo.d" -MT"src/echo.o" -o "src/echo.o" "../src/echo.c"
+In file included from ../src/echo.c:32:0:
+../src/dataTransmitter.h:12:40: warning: 'struct tcp_pcb' declared inside parameter list will not be visible outside of this definition or declaration
+ void continuousDataTransmission(struct tcp_pcb *pcb);
+                                        ^~~~~~~
+../src/echo.c: In function 'start_application':
+../src/echo.c:113:11: warning: unused variable 'port' [-Wunused-variable]
+  unsigned port = 7;
+           ^~~~
+'Finished building: ../src/echo.c'
+' '
+'Building file: ../src/main.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I../../echo_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../echo_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building file: ../src/platform_mb.c'
+'Invoking: MicroBlaze gcc compiler'
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform_mb.o" -I../../echo_test_bsp/microblaze_0/include -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform_mb.d" -MT"src/platform_mb.o" -o "src/platform_mb.o" "../src/platform_mb.c"
+'Finished building: ../src/platform_mb.c'
+' '
+'Building target: echo_test.elf'
+'Invoking: MicroBlaze gcc linker'
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../echo_test_bsp/microblaze_0/lib -mlittle-endian -mcpu=v11.0 -mxl-soft-mul -Wl,--no-relax -Wl,--gc-sections -o "echo_test.elf"  ./src/dataTransmitter.o ./src/echo.o ./src/i2c_access.o ./src/iic_phyreset.o ./src/main.o ./src/platform.o ./src/platform_mb.o ./src/platform_ppc.o ./src/platform_zynq.o ./src/platform_zynqmp.o ./src/sfp.o ./src/si5324.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group -Wl,--start-group,-lxil,-llwip4,-lgcc,-lc,--end-group
+'Finished building target: echo_test.elf'
+' '
+'Invoking: MicroBlaze Print Size'
+mb-size echo_test.elf  |tee "echo_test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 107804	   1428	3962328	4071560	 3e2088	echo_test.elf
+'Finished building: echo_test.elf.size'
+' '
+
+17:19:17 Build Finished (took 1s.851ms)
+

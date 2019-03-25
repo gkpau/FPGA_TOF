@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="design_1_wrapper.bit" key="design_1_wrapper_hw_platform_0-bitFile"/>
+	<item value="E:\FPGA_projects\TOF_4Ports\TOF_4Ports.runs\impl_1\design_1_wrapper.bit" key="&lt;None&gt;-bitFile"/>
+	<item value="" key="&lt;None&gt;-bmmFile"/>
+	<item value="Auto Detect" key="&lt;None&gt;-device"/>
+	<item value="Local" key="design_1_wrapper_hw_platform_0-target"/>
+	<item value="Auto Detect" key="design_1_wrapper_hw_platform_0-device"/>
+	<item value="&lt;None&gt;" key="programfpga.hwplatform"/>
+	<item value="Local" key="&lt;None&gt;-target"/>
+	<item value="bootloop" key="design_1_wrapper_hw_platform_0-microblaze_0-initElf"/>
+	<item value="false" key="&lt;None&gt;-partial_bit"/>
+	<item value="false" key="design_1_wrapper_hw_platform_0-partial_bit"/>
+	<item value="design_1_wrapper.mmi" key="design_1_wrapper_hw_platform_0-bmmFile"/>
+</section>

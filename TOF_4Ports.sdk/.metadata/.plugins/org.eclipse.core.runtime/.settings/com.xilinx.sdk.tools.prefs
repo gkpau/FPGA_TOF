@@ -1,0 +1,13 @@
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.bss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.data=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.rodata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.sbss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.sbss2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.sdata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.sdata2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:.text=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:heap=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:heap-size=40000
+com.xilinx.sdk.linkgen.prefs.TCPServer\:stack=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.TCPServer\:stack-size=40000
+eclipse.preferences.version=1
